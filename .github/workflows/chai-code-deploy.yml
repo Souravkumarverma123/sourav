@@ -3,19 +3,19 @@ name: Deploy Node.js project on Excloud
 on:
     push:
         branches:
-            -main
+            - main
 
 jobs: 
     deploy: 
         runs-on: ubuntu-latest
 
         steps:
-            -name: checkout code
-            uses: actions/checkout@v4
+            - name: checkout code
+              uses: actions/checkout@v4
 
-            -name: Deploy on Excloud
-            uses: appleboy/ssh-action@v1.0.3
-            with:
+            - name: Deploy on Excloud
+              uses: appleboy/ssh-action@v1.0.3
+              with:
                 host: 210.79.129.168
                 username: ubuntu
                 key: ${{secrets.PRIVATE_KEY}}
