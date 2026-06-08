@@ -20,10 +20,10 @@ jobs:
                 username: ubuntu
                 key: ${{ secrets.PRIVATE_KEY }}
                 script: |
-                    export NVM_DIR="HOME/.nvm"
-                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+                    export NVM_DIR="$HOME/.nvm"
+                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
                     cd /home/ubuntu/sourav
-                    git pull 
+                    git pull
                     npm install
                     pm2 restart 0
 
