@@ -18,7 +18,7 @@ jobs:
               with:
                 host: 210.79.129.168
                 username: ubuntu
-                key: ${{secrets.PRIVATE_KEY}}
+                key: ${{ secrets.PRIVATE_KEY }}
                 script: |
                     cd /home/ubuntu/sourav
                     git pull 
