@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/health", (req, res) => {
-  return res.json({ message: "server is healthy and running 🐋  ", status: "Github actions implemented", name: "Sourav kumar verma" });
+  return res.json({ message: "server is healthy and running 🐋  ", status: "Github actions implemented" });
 });
 
 app.listen(PORT, () => {
