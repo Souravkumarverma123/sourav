@@ -38,11 +38,11 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
             # Stop and remove the existing container (ignore errors if not running)
-            docker stop chaicode_deploy || true
-            docker rm chaicode_deploy || true
+            sudo docker stop chaicode_deploy || true
+            sudo docker rm chaicode_deploy || true
 
             # Pull the fresh image from Docker Hub
-            docker pull souravkumarverma123/chaicode_deploy
+            sudo docker pull souravkumarverma123/chaicode_deploy
 
             # Run the new container
-            docker run -d -p 8000:8000 --name chaicode_deploy souravkumarverma123/chaicode_deploy
+            sudo docker run -d -p 8000:8000 --name chaicode_deploy souravkumarverma123/chaicode_deploy
