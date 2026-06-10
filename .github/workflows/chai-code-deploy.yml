@@ -29,7 +29,7 @@ jobs:
         run: |
             docker build -t souravkumarverma123/chaicode_deploy .
             docker push souravkumarverma123/chaicode_deploy
-        
+
       - name: Deploy on Excloud
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -37,15 +37,17 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            # kill the existing docker container
-            sudo docker rm -f chaicode_deploy || true
+            cd /home/ubuntu/sourav
 
-            # Again pull the fresh image from docker Hub
-            sudo docker pull souravkumarverma123/chaicode_deploy
+            # git pull the latest code to make sure we have the latest Caddyfile
+            git pull origin main
 
-            # Run the docker container
-            sudo docker run --name chaicode_deploy --restart unless-stopped -d -p 80:8000 souravkumarverma123/chaicode_deploy
+            # make sure to pull a fresh copy of souravkumarverma123/chaicode_deploy
+            sudo docker compose pull
 
-            # Clean up old/unused images
+            #docker compose up -d to deploy the latest image
+            sudo docker compose up -d
+
+            # clean up the old/unused images
             sudo docker image prune -f
-           
+
