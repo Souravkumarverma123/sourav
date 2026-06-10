@@ -37,12 +37,15 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            # Stop and remove the existing container (ignore errors if not running)
-            sudo docker stop chaicode_deploy || true
-            sudo docker rm chaicode_deploy || true
+            # kill the existing docker container
+            docker rm -f chaicode_deploy || true
 
-            # Pull the fresh image from Docker Hub
-            sudo docker pull souravkumarverma123/chaicode_deploy
+            # Again pull the fresh image from docker Hub
+            docker pull souravkumarverma123/chaicode_deploy
 
-            # Run the new container
-            sudo docker run -d -p 8000:8000 --name chaicode_deploy souravkumarverma123/chaicode_deploy
+            # Run the docker container
+            docker run --name chaicode_deploy --restart unless-stopped -d -p 8000:8000 souravkumarverma123/chaicode_deploy
+
+            # Clean up old /unused images
+            docker image prune -f
+           
