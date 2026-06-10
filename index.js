@@ -13,7 +13,7 @@ app.get("/health", (req, res) => {
 });
 
 app.get("/chaicode", (req, res) => {
-  return res.json({ message: "Welcome to chai aur code server 🐋  ", status: "Github actions is fully implemented" });
+  return res.json({ message: "We are live and this is the first response from chaicode  ", status: "Chaicode is now live" });
 });
 
 app.get("/coffee", (req, res) => {
