@@ -44,7 +44,7 @@ jobs:
             sudo docker pull souravkumarverma123/chaicode_deploy
 
             # Run the docker container
-            sudo docker run --name chaicode_deploy --restart unless-stopped -d -p 8000:8000 souravkumarverma123/chaicode_deploy
+            sudo docker run --name chaicode_deploy --restart unless-stopped -d -p 80:8000 souravkumarverma123/chaicode_deploy
 
             # Clean up old/unused images
             sudo docker image prune -f
