@@ -12,6 +12,15 @@ app.get("/health", (req, res) => {
   return res.json({ message: "server is healthy and running 🐋  ", status: "Github actions is fully implemented" });
 });
 
+app.get("/chaicode", (req, res) => {
+  return res.json({ message: "Welcome to chai aur code server 🐋  ", status: "Github actions is fully implemented" });
+});
+
+app.get("/coffee", (req, res) => {
+  return res.json({ message: "Welcome to chai aur code server 🐋  ", status: "Github actions is fully implemented" });
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
