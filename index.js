@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT ?? 8000; 
 
 app.get("/", (req, res) => {
-  return res.json({ message: "Welocome to my server 🐋" });
+  return res.json({ message: "Welocome to my spaceform server 🐋" });
 });
 
 app.get("/health", (req, res) => {
