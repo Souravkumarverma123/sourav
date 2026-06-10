@@ -38,14 +38,14 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
             # kill the existing docker container
-            docker rm -f chaicode_deploy || true
+            sudo docker rm -f chaicode_deploy || true
 
             # Again pull the fresh image from docker Hub
-            docker pull souravkumarverma123/chaicode_deploy
+            sudo docker pull souravkumarverma123/chaicode_deploy
 
             # Run the docker container
-            docker run --name chaicode_deploy --restart unless-stopped -d -p 8000:8000 souravkumarverma123/chaicode_deploy
+            sudo docker run --name chaicode_deploy --restart unless-stopped -d -p 8000:8000 souravkumarverma123/chaicode_deploy
 
-            # Clean up old /unused images
-            docker image prune -f
+            # Clean up old/unused images
+            sudo docker image prune -f
            
