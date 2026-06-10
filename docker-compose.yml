@@ -1,19 +1,28 @@
 services:
   nodejs-server:
     image: souravkumarverma123/chaicode_deploy
+    restart: unless-stopped
     deploy:
       replicas: 3
     networks:
       - chaicode-internal
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   caddy:
     image: caddy:latest
+    restart: unless-stopped
     ports:
       - '80:80'
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
     networks:
       - chaicode-internal
+    depends_on:
+      - nodejs-server
 
 networks:
   chaicode-internal:
