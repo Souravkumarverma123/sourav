@@ -17,8 +17,12 @@ services:
     restart: unless-stopped
     ports:
       - '80:80'
+      - '443:443'
+      - '443:443/udp'
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
     networks:
       - chaicode-internal
     depends_on:
@@ -27,3 +31,7 @@ services:
 networks:
   chaicode-internal:
     driver: bridge
+
+volumes:
+  caddy_data:
+  caddy_config:
